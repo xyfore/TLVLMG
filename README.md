@@ -11,6 +11,7 @@ This repository is the official implementation of the paper: **"Making Large Vis
 Few-shot classification (FSC) aims to emulate the human ability to rapidly learn new concepts from a handful of examples. While Large Vision-Language Models (LVLMs) show promise, our research identifies two core bottlenecks:
 1.  **Positional Bias**: Models like Qwen2.5-VL exhibit a strong "recency bias," favoring the last options in a support set.
 2.  **Insufficient Learning**: Models tend to over-rely on pre-trained knowledge rather than genuinely generalizing from the provided support samples.
+<img width="651" height="300" alt="image" src="https://github.com/user-attachments/assets/48b59b96-f762-4d98-95db-5096e73a2d73" />
 
 We propose a systematic optimization framework to address these challenges while significantly reducing inference latency.
 
@@ -51,11 +52,3 @@ Our methods achieve superior performance across multiple FSC benchmarks:
 
 ## 📝 Citation
 If you find our work or code useful, please cite:
-
-```bibtex
-@article{zhang2026making,
-  title={Making Large Vision Language Models Better Few-Shot Learners},
-  author={Zhang, Chuanyi and Liu, Fan and Xu, Yi and An, Yuexuan and Cao, Shuhua and Deng, Cheng},
-  journal={IEEE Transactions on Image Processing},
-  year={2026}
-}

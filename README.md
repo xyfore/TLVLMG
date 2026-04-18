@@ -24,77 +24,43 @@ For our preliminary study and code base, please refer to:
 ---
 
 ## 📖 Introduction
-Few-shot classification (FSC) is challenging for LVLMs due to two core bottlenecks:
-1.  **Positional Bias**: Models exhibit severe biases (e.g., Primacy Bias in Qwen-VL, Recency Bias in Qwen2.5-VL), favoring specific option positions.
-2.  **Insufficient Learning**: Models often over-rely on pre-trained knowledge rather than learning from the provided support samples.
+Few-shot classification (FSC) aims to emulate the human ability to rapidly learn new concepts from a handful of examples. While Large Vision-Language Models (LVLMs) show promise, our research identifies two core bottlenecks:
+1.  **Positional Bias**: Models like Qwen2.5-VL exhibit a strong "recency bias," favoring the last options in a support set.
+2.  **Insufficient Learning**: Models tend to over-rely on pre-trained knowledge rather than genuinely generalizing from the provided support samples.
 
-Our TIP version addresses these issues while maintaining high efficiency via token pruning.
-
----
-
-## 🚀 Step-by-Step Guide
-
-### Step 1: Build Meta-task Instructions
-Generate N-way K-shot instruction-following data.
-* **Folder**: `build_data_instruction/`
-* **Core Logic**: Converts datasets into formats where query samples are aligned with candidate answers, incorporating **Position-Balanced** distribution.
-
-### Step 2: Instruction Fine-tuning
-Perform QLoRA fine-tuning with our enhanced strategies.
-* **Strategies**: 
-    * **PB-FT**: Position-balanced training.
-    * **SGBG**: Semantic-guided background augmentation via Stable Diffusion.
-    * **Label Augmentation (LA)**: Character perturbation to break token overconfidence.
-* **Script**: `finetune_qlora_ds_cww.sh`
-
-### Step 3: Inference & Efficiency Optimization
-* **Differentiated Token Pruning**: Prunes support and query images with different ratios to balance latency and accuracy.
-* **Evaluation Action**: Execute scripts in `Test_Qwen_scripts/`.
-* **Metric Calculation**: Use `cal_for_Qwen_using_CLIP.py` for `Acc`, `Acc_occur`, etc.
-
-### Step 4: Attribute & Candidate Selection (Optional)
-* **Attribute Generation**: `attribute_text/mllm_generate_text_v3.py` generates detailed visual attributes.
-* **Candidate Selection (CS)**: Filters unreliable candidates to simplify the classification task during inference.
+We propose a systematic optimization framework to address these challenges while significantly reducing inference latency.
 
 ---
 
-## 📊 Performance (5-way 1-shot)
+## 🚀 Core Contributions
 
-| Dataset | AAAI 2025 | **Ours (TIP Extension)** | Improvement |
+* **Position-Balanced Instruction Fine-Tuning (PB-FT)**: Corrects positional bias by constructing meta-tasks where the correct answer is uniformly distributed across all candidate positions.
+* **Semantic-Guided Background Generation (SGBG)**: Uses GPT-4 guided prompts and Stable Diffusion to generate diverse backgrounds, breaking spurious visual correlations.
+* **Hard Negative Mining Task Construction (HNMTC)**: Employs OpenCLIP-based similarity clustering to build more challenging meta-tasks, compelling the model to learn discriminative features.
+* **Differentiated Token Pruning**: A two-stage framework that prunes support and query images with different ratios, reducing FLOPs to 19.2% while maintaining performance.
+
+---
+
+## 📊 Experimental Results (5-way 1-shot)
+Our methods achieve superior performance across multiple FSC benchmarks:
+
+### General Benchmarks
+| Method | MiniImageNet | CIFAR-FS | TieredImageNet |
 | :--- | :---: | :---: | :---: |
-| MiniImageNet | 98.24% | **99.20%** | +0.96% |
-| CIFAR-FS | 95.02% | **97.24%** | +2.22% |
-| CUB-200 | 96.40% | **99.16%** | +2.76% |
-| Stanford Cars | 99.72% | **99.84%** | +0.12% |
+| Qwen2.5-VL (Base) | 94.02% | 89.16% | 93.56% |
+| **Ours** | **99.20%** | **97.24%** | **98.80%** |
 
----
-
-## 📂 Data Preparation
-The experiments utilize datasets from **ELEVATER** for training and 8 established benchmarks for testing:
-* **General**: MiniImageNet, CIFAR-FS, Tiered-ImageNet.
-* **Fine-grained**: CUB, Stanford Dogs, FGVC-Aircraft, Oxford Flowers, Stanford Cars.
+### Fine-Grained Benchmarks
+| Method | CUB-200 | Stanford Dogs | Stanford Cars |
+| :--- | :---: | :---: | :---: |
+| Qwen2.5-VL (Base) | 96.28% | 94.02% | 97.84% |
+| **Ours** | **99.16%** | **98.26%** | **99.84%** |
 
 ---
 
 ## 📅 Roadmap
 - [x] Paper submitted to IEEE TIP.
 - [ ] Release of Pre-trained LoRA weights (Upon Acceptance).
-- [ ] Open-source full code-base (Upon Acceptance).
+- [ ] Open-source training and evaluation scripts (Upon Acceptance).
 
 ---
-
-## 📝 Citation
-```bibtex
-@article{zhang2026making,
-  title={Making Large Vision Language Models Better Few-Shot Learners},
-  author={Zhang, Chuanyi and Liu, Fan and Xu, Yi and An, Yuexuan and Cao, Shuhua and Deng, Cheng},
-  journal={IEEE Transactions on Image Processing},
-  year={2026}
-}
-
-@inproceedings{liu2025making,
-  title={Making Large Vision Language Models to Be Good Few-Shot Learners},
-  author={Liu, Fan and Cai, Wenwen and Huo, Jian and Zhang, Chuanyi and Chen, Delong and Zhou, Jun},
-  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
-  year={2025}
-}

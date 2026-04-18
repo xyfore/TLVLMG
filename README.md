@@ -19,7 +19,7 @@ This work is a significant extension of our previous research published at **AAA
 ## 📚 Previous Work (AAAI 2025)
 For our preliminary study and code base, please refer to:
 * **Project**: [MLVLM-FSL (AAAI 2025)](https://github.com/HUOUO7/MLVLM-FSL)
-* **Paper**: [Making Large Vision Language Models to Be Good Few-Shot Learners](https://arxiv.org/abs/2412.14713)
+* **Paper**: [Making Large Vision Language Models to Be Good Few-Shot Learners](https://arxiv.org/html/2408.11297v1)
 
 ---
 

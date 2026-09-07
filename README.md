@@ -39,25 +39,6 @@ We propose a systematic optimization framework to address these challenges while
 * **Hard Negative Mining Task Construction (HNMTC)**: Employs OpenCLIP-based similarity clustering to build more challenging meta-tasks, compelling the model to learn discriminative features.
 * **Differentiated Token Pruning**: A two-stage framework that prunes support and query images with different ratios, reducing FLOPs to 19.2% while maintaining performance.
 
----
-
-## 📊 Experimental Results (5-way 1-shot)
-Our methods achieve superior performance across multiple FSC benchmarks:
-
-### General Benchmarks
-| Method | MiniImageNet | CIFAR-FS | TieredImageNet |
-| :--- | :---: | :---: | :---: |
-| Qwen2.5-VL (Base) | 94.02% | 89.16% | 93.56% |
-| **Ours** | **99.20%** | **97.24%** | **98.80%** |
-
-### Fine-Grained Benchmarks
-| Method | CUB-200 | Stanford Dogs | Stanford Cars |
-| :--- | :---: | :---: | :---: |
-| Qwen2.5-VL (Base) | 96.28% | 94.02% | 97.84% |
-| **Ours** | **99.16%** | **98.26%** | **99.84%** |
-
----
-
 ## 📅 Roadmap
 - [x] Paper submitted to IEEE TIP.
 - [ ] Release of Pre-trained LoRA weights (Upon Acceptance).

@@ -9,7 +9,7 @@ This repository is the official implementation of the paper: **"Making Large Vis
 
 ## 🆕 Extension Highlights (TIP Version)
 This work is a significant extension of our previous research published at **AAAI 2025**. Key upgrades include:
-* **Base Model**: Upgraded from Qwen-VL to **Qwen2.5-VL**.
+* **Base Model**: Upgraded from Qwen-VL to both **Qwen2.5-VL** and **Qwen3-VL**.
 * **Debiasing**: Identified and corrected the **Recency Bias** in state-of-the-art LVLMs.
 * **Learning Enhancement**: Introduced **Semantic-Guided Background Generation (SGBG)** and **Hard Negative Mining (HNMTC)**.
 * **Inference Efficiency**: Proposed a **Differentiated Token Pruning** framework, achieving a **3.43x speedup** (FLOPs reduced to 19.2%).

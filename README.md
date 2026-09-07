@@ -1,9 +1,9 @@
 # Making Large Vision Language Models Better Few-Shot Learners
 
 [![Paper](https://img.shields.io/badge/Paper-IEEE_TIP-blue)](https://github.com/HUOUO7/TLVLMG)
-[![Venue](https://img.shields.io/badge/Status-Under_Review-orange)](https://github.com/HUOUO7/TLVLMG)
+[![Venue](https://img.shields.io/badge/Status-Accepted-brightgreen)](https://github.com/HUOUO7/TLVLMG)
 
-This repository is the official implementation of the paper: **"Making Large Vision Language Models Better Few-Shot Learners"**, currently submitted to **IEEE Transactions on Image Processing (TIP)**. 
+This repository is the official implementation of the paper: **"Making Large Vision Language Models Better Few-Shot Learners"**, accepted by **IEEE Transactions on Image Processing (TIP)** on **September 2, 2025**.
 
 ---
 
@@ -39,8 +39,10 @@ We propose a systematic optimization framework to address these challenges while
 * **Hard Negative Mining Task Construction (HNMTC)**: Employs OpenCLIP-based similarity clustering to build more challenging meta-tasks, compelling the model to learn discriminative features.
 * **Differentiated Token Pruning**: A two-stage framework that prunes support and query images with different ratios, reducing FLOPs to 19.2% while maintaining performance.
 
+---
+
 ## 📅 Roadmap
-- [x] Paper submitted to IEEE TIP.
+- [x] Paper accepted by IEEE TIP (September 2, 2025).
 - [ ] Release of Pre-trained LoRA weights (Upon Acceptance).
 - [ ] Open-source training and evaluation scripts (Upon Acceptance).
 

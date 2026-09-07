@@ -3,7 +3,7 @@
 [![Paper](https://img.shields.io/badge/Paper-IEEE_TIP-blue)](https://github.com/HUOUO7/TLVLMG)
 [![Venue](https://img.shields.io/badge/Status-Accepted-brightgreen)](https://github.com/HUOUO7/TLVLMG)
 
-This repository is the official implementation of the paper: **"Making Large Vision Language Models Better Few-Shot Learners"**, accepted by **IEEE Transactions on Image Processing (TIP)** on **September 2, 2025**.
+This repository is the official implementation of the paper: **"Making Large Vision Language Models Better Few-Shot Learners"**, accepted by **IEEE Transactions on Image Processing (TIP)** on **September 2, 2026**.
 
 ---
 
